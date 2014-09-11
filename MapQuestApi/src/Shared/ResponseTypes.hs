@@ -13,13 +13,9 @@ Here only FromJSON instances are allowed!!
 module Shared.ResponseTypes where
 
 
-import qualified Data.Text as T (Text,pack,unpack)
+import qualified Data.Text as T (Text)
 import GHC.Generics (Generic)
 import Data.Aeson  hiding (Result) 
-import Control.Applicative ((<$>), (<*>))
-import Data.ByteString.Lazy.UTF8   (toString)
-
-import Data.ByteString (ByteString)
 
 type LinkId = Integer
 
@@ -46,9 +42,9 @@ instance FromJSON Options
 
 
 data Info = Info {
- statuscode :: Integer,
- copyright ::  Copyright,
- messages :: [Message]
+ statuscode :: Integer
+ , copyright ::  Copyright
+ , messages :: [T.Text]
 }deriving (Show,Generic)
 instance FromJSON Info
 
@@ -59,10 +55,6 @@ data Copyright = Copyright {
 }deriving (Show,Generic)
 instance FromJSON Copyright
 
-data Message = Message {
- a :: Maybe T.Text
-}deriving (Show,Generic)
-instance FromJSON Message
 
 -- | used by geocoding and directions
 data Location = Location {

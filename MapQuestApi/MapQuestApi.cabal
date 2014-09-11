@@ -28,5 +28,8 @@ executable MapQuestApi
                    Shared.DirectionsRequestType,
                    Shared.DirectionsResponseType,
                    Shared.Maneuver,
-                   Shared.Leg
+                   Shared.Leg,
+                   Examples.DirectionsExamples
+
+
 

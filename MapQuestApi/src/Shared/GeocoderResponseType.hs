@@ -18,9 +18,9 @@ import Data.Aeson  hiding (Result)
 import Shared.ResponseTypes
 
 data GeocoderResult =  GeocoderResult {
- info::Info,
- options::Options,
- results::[Result]
+ info::Info
+ , options::Options
+ , results::[Result]
 }deriving (Show,Generic)
 instance FromJSON GeocoderResult
 

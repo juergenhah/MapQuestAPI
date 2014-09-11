@@ -24,7 +24,7 @@ download :: String  -- ^ URL to request
         -> IO (Either String ByteString) -- ^ Left includes the error with a message, Right the response body
 download url requestParameter =do
         putStrLn   requestURL
-        downloadURL requestURL
+        downloadURL requestURL --for debugging issues
  where requestURL = url ++ (Base.urlEncodeVars requestParameter)
 
 -- | function requests the URL and returns with a Error and a Message or with the body as ByteString
@@ -38,8 +38,8 @@ downloadURL url = do
           case resp of
            Left x ->
             case x of
-             Stream.ErrorReset ->return $ Left "ErrorReset: "
-             Stream.ErrorClosed ->return $ Left "ErrorClosed: "
+             Stream.ErrorReset ->return $ Left "ErrorReset"
+             Stream.ErrorClosed ->return $ Left "ErrorClosed"
              Stream.ErrorParse y -> return $ Left ("ErrorClosed: "++show y)
              Stream.ErrorMisc y -> return $ Left ("ErrorClosed: "++show y)
            Right r ->
