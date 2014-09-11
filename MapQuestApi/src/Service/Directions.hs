@@ -15,19 +15,8 @@ import Data.Maybe (fromJust)
 import Shared.DirectionsResponseType (legs, route)
 import Shared.Leg (maneuvers)
 
-developerKey = "Fmjtd|luur250b20,2n=o5-9w22g6"
-
-testGetDirectionsFromTo = getDirectionsFromTo developerKey from to
- where from = GenericRequest.Point {GenericRequest.lat = 48.198353, GenericRequest.lng = 16.3747}
-       to = GenericRequest.Point {GenericRequest.lat = 48.238353, GenericRequest.lng = 16.5047}
-
-getManeuvers = do
- direction <- testGetDirectionsFromTo
- let maneu = mapM maneuvers $ legs.route.fromJust $ direction
- mapM_ (putStrLn.show) maneu
 
 
--- * implementations
 getDirectionsFromTo :: String -> GenericRequest.Point -> GenericRequest.Point ->IO (Maybe Response.DirectionsResult)
 getDirectionsFromTo devKey start end = send devKey params 
  where params = Request.DirectionsParameters {locations = [start,end ]

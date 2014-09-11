@@ -16,15 +16,10 @@ import qualified Shared.GeocoderRequestType as Request
 import qualified Shared.GeocoderResponseType as Response
 import qualified Shared.RequestTypes as GenericRequest
 
-developerKey = "Fmjtd|luur250b20,2n=o5-9w22g6"
 
-geocodeStreetTest :: IO (Maybe Response.GeocoderResult)
-geocodeStreetTest  = geocodeStreet developerKey "Gusshausstrasse, Vienna"
- 
 defaultParams :: Request.GeocodingParameters
 defaultParams = Request.GeocodingParameters {Request.location = GenericRequest.Street {GenericRequest.street = T.pack "Vienna"}, Request.options = Nothing};
 
-testoptions = GenericRequest.MR 3 (GenericRequest.TMaps True GenericRequest.End)
 
 geocodeStreet :: String -> String -> (IO (Maybe Response.GeocoderResult))
 geocodeStreet devKey street = send devKey params 

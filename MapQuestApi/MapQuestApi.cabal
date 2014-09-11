@@ -28,6 +28,5 @@ executable MapQuestApi
                    Shared.DirectionsRequestType,
                    Shared.DirectionsResponseType,
                    Shared.Maneuver,
-                   Shared.Leg,
-                   Test.GeocoderTest
+                   Shared.Leg
 
